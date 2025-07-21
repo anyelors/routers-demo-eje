@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar';
+import Inicio from './pages/Inicio';
+import SobreNosotros from './pages/SobreNosotros';
+import Contacto from './pages/Contacto';
+import Formulario from './pages/Formulario';
+import Confirmacion from './pages/Confirmacion';
+import Buscador from './pages/Buscador';
+import RutaProtegidaPorRol from './components/RutaProtegidaPorRol';
+import AdminPanel from './pages/AdminPanel';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/sobre" element={<SobreNosotros />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/formulario" element={<Formulario />} />
+        <Route path="/confirmacion" element={<Confirmacion />} />
+        <Route path="/buscar" element={<Buscador />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/admin"
+          element={
+            <RutaProtegidaPorRol rolPermitido="admin">
+              <AdminPanel />
+            </RutaProtegidaPorRol>
+          }
+        />
+
+
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
