@@ -10,6 +10,7 @@ import Buscador from './pages/Buscador';
 import RutaProtegidaPorRol from './components/RutaProtegidaPorRol';
 import AdminPanel from './pages/AdminPanel';
 import Login from './pages/Login';
+import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
@@ -31,11 +32,9 @@ function App() {
             </RutaProtegidaPorRol>
           }
         />
-
-
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
